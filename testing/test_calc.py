@@ -1,7 +1,5 @@
 import pytest
 import yaml
-import sys
-sys.path.append("..")
 from base.calc import Calc
 
 
