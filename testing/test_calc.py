@@ -20,12 +20,17 @@ class TestCalc:
     def test_add_normal(self,a,b,sum):
         assert sum == calctest.add(a,b)
 
+    @pytest.mark.parametrize("a,b,sum",add_test_data["abnormal"])
+    def test_add_abnormal(self,a,b,sum):
+        assert sum == calctest.add(a,b)
+
     @pytest.mark.parametrize("a,b,div",div_test_data["normal"])
     def test_div_normal(self,a,b,div):
-        print(round((div - calctest.div(a, b)), 4))
         assert abs(round((div - calctest.div(a,b)),4)) < 0.001
 
-
+    @pytest.mark.parametrize("a,b,div",div_test_data["abnormal"])
+    def test_div_abnormal(self,a,b,div):
+        assert abs(round((div - calctest.div(a,b)),4)) < 0.001
 
 
 if __name__ == "__main__":
